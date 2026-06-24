@@ -129,7 +129,7 @@ private:
      * @param iBufferSize  Size of output buffer
      * @return true if successful, false on error
      */
-    static bool FetchPartCodeFromServer(
+    bool FetchPartCodeFromServer(
         char* oPartCode, 
         size_t iBufferSize);
 

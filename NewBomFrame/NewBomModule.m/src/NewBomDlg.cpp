@@ -72,7 +72,7 @@ bool NewBomDlg::FetchPartCodeFromServer(
     if (!hSession)
     {
         NewBomLog("HTTP", "WinHttpOpen failed: %lu", GetLastError());
-        m_pStatusLabel->SetTitle(U(L"\x7F51\x7ED\x521D\x5316\x5931\x8D25"));  // "网络初始化失败"
+        m_pStatusLabel->SetTitle(U(L"\x7F51\x7EDC\x521D\x59CB\x5316\x5931\x8D25"));  // "网络初始化失败"
         return false;
     }
     NewBomLog("HTTP", "WinHttpOpen success: hSession=%p", hSession);
@@ -87,7 +87,7 @@ bool NewBomDlg::FetchPartCodeFromServer(
     if (!hConnect)
     {
         NewBomLog("HTTP", "WinHttpConnect failed: %lu", GetLastError());
-        m_pStatusLabel->SetTitle(U(L"\x7F51\x7ED\x8FDE\x63A5\x5931\x8D25\xFF0C\x8BF7\x68C0\x67E5\x670D\x52A1\x5668"));  // "网络连接失败，请检查服务器"
+        m_pStatusLabel->SetTitle(U(L"\x7F51\x7EDC\x8FDE\x63A5\x5931\x8D25\xFF0C\x8BF7\x68C0\x67E5\x670D\x52A1\x5668"));  // "网络连接失败，请检查服务器"
         WinHttpCloseHandle(hSession);
         return false;
     }
@@ -106,7 +106,7 @@ bool NewBomDlg::FetchPartCodeFromServer(
     if (!hRequest)
     {
         NewBomLog("HTTP", "WinHttpOpenRequest failed: %lu", GetLastError());
-        m_pStatusLabel->SetTitle(U(L"\x521B\x5316\x8BF7\x6C42\x5931\x8D25"));  // "创建请求失败"
+        m_pStatusLabel->SetTitle(U(L"\x521B\x5EFA\x8BF7\x6C42\x5931\x8D25"));  // "创建请求失败"
         WinHttpCloseHandle(hConnect);
         WinHttpCloseHandle(hSession);
         return false;
@@ -139,9 +139,9 @@ bool NewBomDlg::FetchPartCodeFromServer(
         if (err == ERROR_WINHTTP_TIMEOUT)
             m_pStatusLabel->SetTitle(U(L"\x8BF7\x6C42\x8D85\x65F6\xFF0C\x8BF7\x7A0D\x540E\x91CD\x8BD5"));  // "请求超时，请稍后重试"
         else if (err == ERROR_WINHTTP_CANNOT_CONNECT)
-            m_pStatusLabel->SetTitle(U(L"\x65E0\x6CD5\x8FDE\x63A5\x670D\x52A1\x5668\xFF0C\x8BF7\x68C0\x67E5\x670D\x52A1\x5668\x662F\x5426\x8FD0\x8F6C"));  // "无法连接服务器，请检查服务器是否运行"
+            m_pStatusLabel->SetTitle(U(L"\x65E0\x6CD5\x8FDE\x63A5\x670D\x52A1\x5668\xFF0C\x8BF7\x68C0\x67E5\x670D\x52A1\x5668\x662F\x5426\x8FD0\x884C"));  // "无法连接服务器，请检查服务器是否运行"
         else
-            m_pStatusLabel->SetTitle(U(L"\x7F51\x7ED\x8FDE\x63A5\x5931\x8D25\xFF0C\x8BF7\x68C0\x67E5\x7F51\x7ED"));  // "网络连接失败，请检查网络"
+            m_pStatusLabel->SetTitle(U(L"\x7F51\x7EDC\x8FDE\x63A5\x5931\x8D25\xFF0C\x8BF7\x68C0\x67E5\x7F51\x7EDC"));  // "网络连接失败，请检查网络"
         WinHttpCloseHandle(hRequest);
         WinHttpCloseHandle(hConnect);
         WinHttpCloseHandle(hSession);
@@ -257,7 +257,7 @@ bool NewBomDlg::FetchPartCodeFromServer(
     const char* dataPos = strstr(pBuffer, "\"data\":");
     if (!dataPos)
     {
-        m_pStatusLabel->SetTitle(U(L"\x6570\x636E\x683\x5F0F\x9519\x8BEF"));  // "数据格式错误"
+        m_pStatusLabel->SetTitle(U(L"\x6570\x636E\x683C\x5F0F\x9519\x8BEF"));  // "数据格式错误"
         delete[] pBuffer;
         WinHttpCloseHandle(hRequest);
         WinHttpCloseHandle(hConnect);
@@ -268,7 +268,7 @@ bool NewBomDlg::FetchPartCodeFromServer(
     const char* partCodePos = strstr(dataPos, "\"partCode\":");
     if (!partCodePos)
     {
-        m_pStatusLabel->SetTitle(U(L"\x6570\x636E\x683\x5F0F\x9519\x8BEF"));  // "数据格式错误"
+        m_pStatusLabel->SetTitle(U(L"\x6570\x636E\x683C\x5F0F\x9519\x8BEF"));  // "数据格式错误"
         delete[] pBuffer;
         WinHttpCloseHandle(hRequest);
         WinHttpCloseHandle(hConnect);
@@ -366,7 +366,7 @@ void NewBomDlg::BuildDialog()
     categories[4] = U(L"\x9762\x5957\x7C7B");  // "面套类"
     categories[5] = U(L"\x7EBF\x675F\x3001\x5F00\x5173\x7B49\x7535\x5668\x7C7B");  // "线束、开关等电器类"
     categories[6] = U(L"\x6ED1\x8F68\x3001\x8C03\x89D2\x5668\x3001\x5347\x9AD8\x6CF5\x7B49\x529F\x80FD\x4EF6");  // "滑轨、调角器、升高泵等功能件"
-    categories[7] = U(L"\x5176\x4ED6\x96F6\x4EF6");  // "其它零件"
+    categories[7] = U(L"\x5176\x5B83\x96F6\x4EF6");  // "其它零件"
     m_pCategory->SetLine(categories, 8);
     m_pCategory->SetSelect(0, 0);
     m_pCategory->SetGridConstraints(1, 2, 1, 1, CATGRID_LEFT);
