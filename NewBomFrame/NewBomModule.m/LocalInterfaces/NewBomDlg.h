@@ -123,18 +123,15 @@ private:
      * 
      * Uses WinHTTP to call http://localhost:8080/api/getCode
      * Parses JSON response and extracts data.partCode
+     * Error messages are displayed directly in m_pStatusLabel
      * 
      * @param oPartCode    Output buffer for part code (e.g., "DLXX0016")
      * @param iBufferSize  Size of output buffer
-     * @param oErrorMsg    Output buffer for error message
-     * @param iErrorSize   Size of error buffer
      * @return true if successful, false on error
      */
     static bool FetchPartCodeFromServer(
         char* oPartCode, 
-        size_t iBufferSize,
-        char* oErrorMsg, 
-        size_t iErrorSize);
+        size_t iBufferSize);
 
     // Control member variables
     CATDlgEditor*     m_pPartName;      // Part name editor
