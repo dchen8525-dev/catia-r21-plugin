@@ -4,6 +4,13 @@ win_b64/
 *.log
 rade_*.log
 
+# Machine-specific files
+.deploy-state.json
+Install_config_win_b64
+CATIAV5Level.h
+CATIAV5Level.lvl
+.system-dictionary-backup
+
 # IDE/Editor
 .vscode/
 .idea/
