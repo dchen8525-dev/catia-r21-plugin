@@ -1,4 +1,4 @@
-NewBomHeader.NewBomCmd.Title     = "取新编号";
+NewBomHeader.NewBomCmd.Title     = "零件取号";
 NewBomHeader.NewBomCmd.ShortHelp = "显示取号对话框";
 NewBomHeader.NewBomCmd.Help      = "显示取号对话框";
 NewBomHeader.NewBomCmd.LongHelp  = "显示零件取号对话框。";
