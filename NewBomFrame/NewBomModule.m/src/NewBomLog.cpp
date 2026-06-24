@@ -1,4 +1,4 @@
-#include "PartNumberMenuLog.h"
+#include "NewBomLog.h"
 
 #include <windows.h>
 #include <stdio.h>
@@ -26,12 +26,12 @@ static void BuildLogPath(char* oPath, size_t iSize)
     }
 
     _snprintf_s(oPath, iSize, _TRUNCATE,
-                "%s%sPartNumberMenuPlugin.log",
+                "%s%sNewBomPlugin.log",
                 base,
                 (base[lstrlenA(base) - 1] == '\\') ? "" : "\\DassaultSystemes\\CATTemp\\");
 }
 
-void PartNumberMenuLog(const char* iStage, const char* iFormat, ...)
+void NewBomLog(const char* iStage, const char* iFormat, ...)
 {
     char message[1024] = { 0 };
     va_list arguments;

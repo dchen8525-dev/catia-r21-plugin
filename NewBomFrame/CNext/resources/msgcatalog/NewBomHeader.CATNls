@@ -1,0 +1,13 @@
+NewBomHeader.NewBomCmd.Title     = "取新编号";
+NewBomHeader.NewBomCmd.ShortHelp = "显示取号对话框";
+NewBomHeader.NewBomCmd.Help      = "显示取号对话框";
+NewBomHeader.NewBomCmd.LongHelp  = "显示零件取号对话框。";
+
+NewBomHeader.NewBomAboutCmd.Title     = "关于本插件";
+NewBomHeader.NewBomAboutCmd.ShortHelp = "显示插件版本信息";
+NewBomHeader.NewBomAboutCmd.Help      = "显示插件版本信息";
+NewBomHeader.NewBomAboutCmd.LongHelp  = "显示件取号插件版本信息。";
+
+NewBomTopMnu.Title       = "NewBOM";
+NewBomNumberMgtMnu.Title = "编号管理";
+NewBomToolsMnu.Title     = "工具";

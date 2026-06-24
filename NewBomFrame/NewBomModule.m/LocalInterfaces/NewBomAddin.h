@@ -1,8 +1,8 @@
-// PartNumberMenuAddin.h
+// NewBomAddin.h
 // CATIA CAA Hello World Plugin - Workbench Addin
 
-#ifndef __PartNumberMenuAddin_h__
-#define __PartNumberMenuAddin_h__
+#ifndef __NewBomAddin_h__
+#define __NewBomAddin_h__
 
 #include "CATBaseUnknown.h"
 #include "CATIAfrGeneralWksAddin.h"
@@ -15,17 +15,17 @@ class CATCmdContainer;
  * This class implements CATIAfrGeneralWksAddin interface to register
  * our Hello World command into CATIA general workshop.
  */
-class PartNumberMenuAddin : public CATBaseUnknown
+class NewBomAddin : public CATBaseUnknown
 {
     CATDeclareClass;
 
 public:
-    PartNumberMenuAddin();
-    virtual ~PartNumberMenuAddin();
+    NewBomAddin();
+    virtual ~NewBomAddin();
 
     // CATIAfrGeneralWksAddin interface implementation
     virtual void CreateCommands();
     virtual CATCmdContainer* CreateToolbars();
 };
 
-#endif // __PartNumberMenuAddin_h__
+#endif // __NewBomAddin_h__

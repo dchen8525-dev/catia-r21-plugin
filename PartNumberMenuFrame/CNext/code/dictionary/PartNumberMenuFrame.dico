@@ -1,6 +1,0 @@
-# CATIA CAA Hello World Plugin Dictionary
-# COPYRIGHT Dassault Systemes 2024
-
-# Hello World General Workshop Add-in
-PartNumberMenuGeneralWksAddin	CATIWorkbenchAddin	libPartNumberMenuModule
-PartNumberMenuGeneralWksAddin	CATIAfrGeneralWksAddin	libPartNumberMenuModule

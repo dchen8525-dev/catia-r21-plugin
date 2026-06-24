@@ -1,0 +1,11 @@
+NewBomCmd.Title = "取新编号";
+NewBomCmd.ShortHelp = "显示取号对话框";
+NewBomCmd.LongHelp = "显示零件取号对话框。";
+
+NewBomAboutCmd.Title = "关于本插件";
+NewBomAboutCmd.ShortHelp = "显示插件版本信息";
+NewBomAboutCmd.LongHelp = "显示件取号插件版本信息。";
+
+NewBomTopMnu.Title = "NewBOM";
+NewBomNumberMgtMnu.Title = "编号管理";
+NewBomToolsMnu.Title = "工具";

@@ -13,13 +13,13 @@ $statePath = Join-Path $workspace ".deploy-state.json"
 $environmentDirectory = "C:\ProgramData\DassaultSystemes\CATEnv"
 $environmentFile = Join-Path $environmentDirectory ($EnvironmentName + ".txt")
 $changeEnvironment = "C:\Program Files\Dassault Systemes\B21\win_b64\code\bin\chcatenv.exe"
-$oldRuntime = "C:\ProgramData\DassaultSystemes\CATPlugins\PartNumberMenu"
-$logPath = Join-Path $env:LOCALAPPDATA "DassaultSystemes\CATTemp\PartNumberMenuPlugin.log"
+$oldRuntime = "C:\ProgramData\DassaultSystemes\CATPlugins\NewBom"
+$logPath = Join-Path $env:LOCALAPPDATA "DassaultSystemes\CATTemp\NewBomPlugin.log"
 $systemDictionary = "C:\Program Files\Dassault Systemes\B21\win_b64\code\dictionary\CATIAApplicationFrame.dic"
 $systemDictionaryBackup = Join-Path $workspace ".system-dictionary-backup"
 $addinDictionaryLines = @(
-    "PartNumberMenuGeneralWksAddin CATIWorkbenchAddin libPartNumberMenuModule",
-    "PartNumberMenuGeneralWksAddin CATIAfrGeneralWksAddin libPartNumberMenuModule"
+    "NewBomGeneralWksAddin CATIWorkbenchAddin libNewBomModule",
+    "NewBomGeneralWksAddin CATIAfrGeneralWksAddin libNewBomModule"
 )
 
 function Assert-Administrator {
@@ -106,10 +106,10 @@ $variables = @(
 
 if ($Action -eq "Install") {
     foreach ($required in @(
-        (Join-Path $runtime "code\bin\PartNumberMenuModule.dll"),
-        (Join-Path $runtime "code\productIC\PartNumberMenuFrameIC.xml"),
-        (Join-Path $runtime "code\dictionary\PartNumberMenuFrame.dico"),
-        (Join-Path $runtime "resources\msgcatalog\PartNumberMenuHeader.CATNls")
+        (Join-Path $runtime "code\bin\NewBomModule.dll"),
+        (Join-Path $runtime "code\productIC\NewBomFrameIC.xml"),
+        (Join-Path $runtime "code\dictionary\NewBomFrame.dico"),
+        (Join-Path $runtime "resources\msgcatalog\NewBomHeader.CATNls")
     )) {
         if (-not (Test-Path $required -PathType Leaf)) {
             throw "RADE runtime output is missing: $required. Run build.bat first."

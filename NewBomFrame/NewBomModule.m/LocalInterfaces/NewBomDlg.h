@@ -1,8 +1,8 @@
-// PartNumberMenuDlg.h
+// NewBomDlg.h
 // CATIA CAA Hello World Dialog
 
-#ifndef __PartNumberMenuDlg_h__
-#define __PartNumberMenuDlg_h__
+#ifndef __NewBomDlg_h__
+#define __NewBomDlg_h__
 
 #include "CATDlgDialog.h"
 #include "CATDlgLabel.h"
@@ -15,14 +15,14 @@
  * 
  * A simple dialog that displays "Hello World!" message
  */
-class PartNumberMenuDlg : public CATDlgDialog
+class NewBomDlg : public CATDlgDialog
 {
     CATDeclareClass;
 
 public:
-    PartNumberMenuDlg(CATDialog* iParent, 
-                  const CATString& iObjectName = "PartNumberMenuDlg");
-    virtual ~PartNumberMenuDlg();
+    NewBomDlg(CATDialog* iParent, 
+                  const CATString& iObjectName = "NewBomDlg");
+    virtual ~NewBomDlg();
 
     void BuildDialog();
 
@@ -40,4 +40,4 @@ private:
     CATDlgLabel*      m_pStatusLabel;
 };
 
-#endif // __PartNumberMenuDlg_h__
+#endif // __NewBomDlg_h__

@@ -1,12 +1,12 @@
-// PartNumberMenuCmd.h
+// NewBomCmd.h
 // CATIA CAA Hello World Command
 
-#ifndef __PartNumberMenuCmd_h__
-#define __PartNumberMenuCmd_h__
+#ifndef __NewBomCmd_h__
+#define __NewBomCmd_h__
 
 #include "CATCommand.h"
 
-class PartNumberMenuDlg;
+class NewBomDlg;
 
 /**
  * @brief Hello World Command
@@ -14,13 +14,13 @@ class PartNumberMenuDlg;
  * This command is activated when the user clicks the toolbar button.
  * It creates and displays a Hello World dialog.
  */
-class PartNumberMenuCmd : public CATCommand
+class NewBomCmd : public CATCommand
 {
     CATDeclareClass;
 
 public:
-    PartNumberMenuCmd();
-    virtual ~PartNumberMenuCmd();
+    NewBomCmd();
+    virtual ~NewBomCmd();
 
     // CATCommand overrides
     virtual CATStatusChangeRC Activate(CATCommand* iCmd,
@@ -36,7 +36,7 @@ private:
                      CATCommandClientData iClientData);
 
     // Dialog instance
-    PartNumberMenuDlg* m_pDialog;
+    NewBomDlg* m_pDialog;
 };
 
-#endif // __PartNumberMenuCmd_h__
+#endif // __NewBomCmd_h__

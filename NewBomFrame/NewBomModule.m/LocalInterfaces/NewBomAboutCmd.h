@@ -1,8 +1,8 @@
-// PartNumberMenuAboutCmd.h
+// NewBomAboutCmd.h
 // CATIA CAA "About" Command - displays plugin version info
 
-#ifndef __PartNumberMenuAboutCmd_h__
-#define __PartNumberMenuAboutCmd_h__
+#ifndef __NewBomAboutCmd_h__
+#define __NewBomAboutCmd_h__
 
 #include "CATCommand.h"
 
@@ -12,13 +12,13 @@
  * Lightweight command that pops up an information box with the plugin
  * version info, then self-destructs. No persistent dialog, no shared mode.
  */
-class PartNumberMenuAboutCmd : public CATCommand
+class NewBomAboutCmd : public CATCommand
 {
     CATDeclareClass;
 
 public:
-    PartNumberMenuAboutCmd();
-    virtual ~PartNumberMenuAboutCmd();
+    NewBomAboutCmd();
+    virtual ~NewBomAboutCmd();
 
     // CATCommand overrides
     virtual CATStatusChangeRC Activate(CATCommand* iCmd,
@@ -29,4 +29,4 @@ public:
                                      CATNotification* iNotif);
 };
 
-#endif // __PartNumberMenuAboutCmd_h__
+#endif // __NewBomAboutCmd_h__

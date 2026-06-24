@@ -1,15 +1,15 @@
-// PartNumberMenuDlg.cpp
+// NewBomDlg.cpp
 // CATIA CAA Hello World Dialog Implementation
 
-#include "PartNumberMenuDlg.h"
-#include "PartNumberMenuLog.h"
+#include "NewBomDlg.h"
+#include "NewBomLog.h"
 #include "CATDlgGridConstraints.h"
 #include "CATUnicodeString.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 // Implement the class
-CATImplementClass(PartNumberMenuDlg,
+CATImplementClass(NewBomDlg,
                   Implementation,
                   CATDlgDialog,
                   CATNull);
@@ -57,13 +57,13 @@ static int GetNextPartNumber(char* oPartNumber, size_t iBufferSize)
 //-----------------------------------------------------------------------------
 // Constructor
 //-----------------------------------------------------------------------------
-PartNumberMenuDlg::PartNumberMenuDlg(CATDialog* iParent,
+NewBomDlg::NewBomDlg(CATDialog* iParent,
                               const CATString& iObjectName)
     : CATDlgDialog(iParent,
                    iObjectName,
                    CATDlgWndModal | CATDlgWndBtnClose | CATDlgGridLayout)
 {
-    PartNumberMenuLog("DIALOG", "constructor this=%p parent=%p", this, iParent);
+    NewBomLog("DIALOG", "constructor this=%p parent=%p", this, iParent);
     m_pPartName = NULL;
     m_pCategory = NULL;
     m_pMaterial = NULL;
@@ -78,17 +78,17 @@ PartNumberMenuDlg::PartNumberMenuDlg(CATDialog* iParent,
 //-----------------------------------------------------------------------------
 // Destructor
 //-----------------------------------------------------------------------------
-PartNumberMenuDlg::~PartNumberMenuDlg()
+NewBomDlg::~NewBomDlg()
 {
-    PartNumberMenuLog("DIALOG", "destructor this=%p", this);
+    NewBomLog("DIALOG", "destructor this=%p", this);
 }
 
 //-----------------------------------------------------------------------------
 // BuildDialog - Create and layout dialog controls
 //-----------------------------------------------------------------------------
-void PartNumberMenuDlg::BuildDialog()
+void NewBomDlg::BuildDialog()
 {
-    PartNumberMenuLog("DIALOG", "BuildDialog entered this=%p", this);
+    NewBomLog("DIALOG", "BuildDialog entered this=%p", this);
     // Set dialog title
     SetTitle(U(L"\x96F6\x4EF6\x53D6\x53F7"));
 
@@ -148,7 +148,7 @@ void PartNumberMenuDlg::BuildDialog()
     m_pNumberButton->SetGridConstraints(5, 2, 1, 1, CATGRID_CENTER);
     AddAnalyseNotificationCB(m_pNumberButton,
         m_pNumberButton->GetPushBActivateNotification(),
-        (CATCommandMethod)&PartNumberMenuDlg::OnGetNumber,
+        (CATCommandMethod)&NewBomDlg::OnGetNumber,
         NULL);
 
     m_pStatusLabel = new CATDlgLabel(this, "StatusLabel");
@@ -159,11 +159,11 @@ void PartNumberMenuDlg::BuildDialog()
     SetGridColumnResizable(1, 0);
     SetGridColumnResizable(2, 0);
 
-    PartNumberMenuLog("DIALOG", "BuildDialog completed name=%p category=%p number=%p",
+    NewBomLog("DIALOG", "BuildDialog completed name=%p category=%p number=%p",
                   m_pPartName, m_pCategory, m_pNumberButton);
 }
 
-void PartNumberMenuDlg::OnGetNumber(CATCommand* iCmd,
+void NewBomDlg::OnGetNumber(CATCommand* iCmd,
                                 CATNotification* iNotif,
                                 CATCommandClientData iClientData)
 {
@@ -171,13 +171,13 @@ void PartNumberMenuDlg::OnGetNumber(CATCommand* iCmd,
     char partNumber[9] = {0};
     if (!GetNextPartNumber(partNumber, sizeof(partNumber)))
     {
-        PartNumberMenuLog("FORM", "number generation failed");
+        NewBomLog("FORM", "number generation failed");
         if (m_pStatusLabel)
             m_pStatusLabel->SetTitle(U(L"\x53D6\x53F7\x5931\x8D25"));
         return;
     }
 
-    PartNumberMenuLog("FORM", "number generated=%s categoryIndex=%d",
+    NewBomLog("FORM", "number generated=%s categoryIndex=%d",
                   partNumber, categoryIndex);
     if (m_pNumberResult)
         m_pNumberResult->SetTitle(CATUnicodeString(partNumber));
