@@ -39,12 +39,12 @@
 ```
 NewBOM (顶级菜单)
   └─ 编号管理 (子菜单)
-      └─ 取新编号 (命令 - 显示取号对话框)
+      └─ 零件取号 (命令 - 显示取号对话框)
   └─ 工具 (子菜单)
       └─ 关于本插件 (命令 - 显示版本信息)
 ```
 
-**取新编号对话框功能：**
+**零件取号对话框功能：**
 - 输入零件名称
 - 选择零件类别（下拉列表）
 - 输入材料
@@ -83,14 +83,14 @@ catia_menu_plugin_r21/
 │       │
 │       ├── LocalInterfaces/  # 头文件目录
 │       │   ├── NewBomAddin.h      # Addin 类声明
-│       │   ├── NewBomCmd.h        # 取新编号命令声明
+│       │   ├── NewBomCmd.h        # 零件取号命令声明
 │       │   ├── NewBomAboutCmd.h   # 关于命令声明
 │       │   ├── NewBomDlg.h        # 对话框类声明
 │       │   └── NewBomLog.h        # 日志工具声明
 │       │
 │       └── src/              # 源文件目录
 │           ├── NewBomAddin.cpp     # Addin 实现（创建菜单）
-│           ├── NewBomCmd.cpp       # 取新编号命令实现
+│           ├── NewBomCmd.cpp       # 零件取号命令实现
 │           ├── NewBomAboutCmd.cpp  # 关于命令实现
 │           ├── NewBomDlg.cpp       # 对话框实现
 │           ├── NewBomLog.cpp       # 日志工具实现
@@ -281,7 +281,7 @@ launch_catia.bat
 
 ### 步骤 4：验证功能
 
-1. 点击 "NewBOM" → "编号管理" → "取新编号"
+1. 点击 "NewBOM" → "编号管理" → "零件取号"
 2. 填写零件信息
 3. 点击 "点击取号" 按钮
 4. 查看生成的编号
@@ -361,7 +361,7 @@ LINK_WITH=CATApplicationFrame JS0GROUP JS0FM DI0PANV2
 |-----|------|
 | MODULE | DLL 加载/卸载 |
 | ADDIN | Addin 创建、菜单构建 |
-| COMMAND | 取新编号命令执行 |
+| COMMAND | 零件取号命令执行 |
 | ABOUT | 关于对话框 |
 | DIALOG | 取号对话框操作 |
 

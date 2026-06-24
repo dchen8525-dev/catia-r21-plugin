@@ -1,7 +1,7 @@
 // NewBomCmd.cpp
 // CATIA CAA Part Number Menu Command Implementation
 //
-// This file implements the main command for the "取新编号" (Get New Number) menu item.
+// This file implements the main command for the "零件取号" (Part Numbering) menu item.
 // When user clicks this menu item, CATIA:
 //   1. Loads the NewBomModule DLL
 //   2. Creates an instance of NewBomCmd (this class)
