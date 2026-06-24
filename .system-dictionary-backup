@@ -1,0 +1,800 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CATApplicationFrame	    CATIAApplication        libCATCafAutostart
+
+CATIASystemConfigurationImpl	CATIASystemConfiguration	libCATCafAutostart
+
+CATIAMailImpl     	    CATIABase               libCATCafAutostart
+CATIAMailImpl     	    CATIAMail               libCATCafAutostart
+CATIARecipientsImpl	    CATIABase               libCATCafAutostart
+CATIARecipientsImpl	    CATIARecipients         libCATCafAutostart
+CATIAAttachmentsImpl        CATIABase               libCATCafAutostart
+CATIAAttachmentsImpl        CATIAAttachments        libCATCafAutostart
+
+CATApplicationFrame         CATIACollection	    libCATCafAutomation
+CATApplicationFrame	    CATIADocuments	    libCATCafAutomation
+CATDocument		    CATIADocument	    libCATCafAutomation
+
+CATDocument                 CATIACameras            libCATCafAutomation
+
+CATIASelectionImpl 	        Selection               libCATCafAutomation
+CATAutoCheckMethodReturningCancelImpl CATIAutoCheckMethodReturningCancel libCATCafAutomation
+CATAutoCheckMethodReturningCancelImpl CATICreateInstance                 libCATCafAutomation
+CATAutomationCsoImpl        CATIAutomationCso       libCATCafAutomation
+CATAutomationCsoImpl        CATICreateInstance      libCATCafAutomation
+CATIAVisPropertiesImpl      VisPropertySet          libCATCafAutomation 
+CATIAVisPropertiesImpl      CATIAVisPropertySet     libCATCafAutomation 
+
+CATFrm2DCamera              CATIABase               libCATCafAutomation
+CATFrm2DCamera              CATIACamera2D           libCATCafAutomation
+CATFrm2DCamera              CATIAViewpoint2D        libCATCafAutomation
+CATFrm2DCamera              CATIViewpoint2DData     libCATCafAutomation
+
+CATFrm3DCamera              CATIABase               libCATCafAutomation
+CATFrm3DCamera              CATIACamera3D           libCATCafAutomation
+CATFrm3DCamera              CATIAViewpoint3D        libCATCafAutomation
+CATFrm3DCamera              CATIViewpoint3DData     libCATCafAutomation
+
+CATCameraFeat               CATIABase               libCATCafAutomation
+CATCameraFeat               CATIACamera3D           libCATCafAutomation
+CATCameraFeat               CATIAViewpoint3D        libCATCafAutomation
+CATCameraFeat               CATIViewpoint3DData     libCATCafAutomation
+          
+CATApplicationFrame	    CATIAWindows	    libCATCafAutomation
+CATFrmWindow		    CATIAWindow		    libCATCafAutomation
+
+CATPrintParameters	        CATIADraftingPageSetup	libCATCafAutomation
+CATPrinterManager           CATIACollection         libCATCafAutomation
+CATPrinterManager           CATIAPrinters           libCATCafAutomation
+CATPrinter		            CATIABase               libCATCafAutomation
+CATPrinter                  CATIAPrinter            libCATCafAutomation
+
+CATFrmWindow                CATIAViewers            libCATCafAutomation
+
+CATViewer                   CATIABase               libCATCafAutomation
+CATViewer                   CATIAViewer             libCATCafAutomation
+CATViewer                   CATIAViewer2D           libCATCafAutomation
+CAT2DViewpoint              CATIAViewpoint2D        libCATCafAutomation
+CAT2DViewpoint              CATIViewpoint2DData     libCATCafAutomation
+
+CATNavigation3DViewer       CATIAViewer3D           libCATCafAutomation
+CAT3DViewpoint              CATIAViewpoint3D        libCATCafAutomation
+CAT3DViewpoint              CATIViewpoint3DData     libCATCafAutomation
+
+CATViewer                   CATIALightSources       libCATCafAutomation
+
+CATViewer                   CATIASpecsViewer        libCATCafAutomation
+CATFrmNavigGraphicWindow    CATIAWindow             libCATCafAutomation
+CATFrmNavigGraphicWindow    CATIASpecsAndGeomWindow libCATCafAutomation
+
+CATIAWorkbenchImpl          CATIABase               libCATCafAutomation
+CATIAWorkbenchImpl          CATIAWorkbench          libCATCafAutomation
+
+
+CATScSelectionAppFrameCont  CATIScriptSelectionAppFrame  libCATCafAutomation
+CATScSelectionAppFrameCont  CATICreateInstance           libCATCafAutomation
+
+
+
+
+
+
+
+CATDocument                 CATIGenTrac             libCATCafAutomation
+CATFrmWindow                CATIGenTrac             libCATCafAutomation
+CATViewer                   CATIGenTrac             libCATCafAutomation
+CATIAWorkbenchImpl          CATIGenTrac             libCATCafAutomation
+CATFrmEditor                CATIGenTrac             libCATCafAutomation
+CATFrm2DCamera              CATIGenTrac             libCATCafAutomation
+CATFrm3DCamera              CATIGenTrac             libCATCafAutomation
+CATCameraFeat               CATIGenTrac             libCATCafAutomation
+CATFrmNavigGraphicWindow    CATIGenTrac             libCATCafAutomation
+CATNavigation3DViewer       CATIGenTrac             libCATCafAutomation
+
+
+
+
+
+
+
+
+CATLoadTabPagesCmd        CATIProgressTask          libCATIAApplicationFrame
+
+
+
+
+
+
+
+
+
+CATSettingsTreeNode           CATINavigateObject        libCATIAApplicationFrame
+CATSettingsTreeNode_node      CATINavigElement          libCATIAApplicationFrame
+CATSettingsTreeNode_node      CATINavigModify           libCATIAApplicationFrame
+CATSettingsTreeNode_arc       CATINavigElement          libCATIAApplicationFrame
+
+
+
+
+CATLinetypeToolsEditor        CATIUserSettings                    libCATCafVisuOptions
+CATUserSettingsManager        CATILinetypeToolsEditorFactory      libCATCafVisuOptions
+CATEditorManager2             CATILinetypeToolsEditorFactory      libCATCafVisuOptions
+
+
+
+
+CATVisualizationToolsEditor   CATIUserSettings                    libCATCafVisuOptions
+CATUserSettingsManager        CATIVisualizationToolsEditorFactory libCATCafVisuOptions
+CATEditorManager2             CATIVisualizationToolsEditorFactory libCATCafVisuOptions
+
+
+
+
+CATNavigationToolsEditor      CATIUserSettings                    libCATCafVisuOptions
+CATUserSettingsManager        CATINavigationToolsEditorFactory    libCATCafVisuOptions
+CATEditorManager2             CATINavigationToolsEditorFactory    libCATCafVisuOptions
+
+
+
+
+CATThicknessToolsEditor       CATIUserSettings                    libCATCafVisuOptions
+CATUserSettingsManager        CATIThicknessToolsEditorFactory     libCATCafVisuOptions
+CATEditorManager2             CATIThicknessToolsEditorFactory     libCATCafVisuOptions
+
+
+
+
+CATPerfoToolsEditor           CATIUserSettings                    libCATCafVisuOptions
+CATUserSettingsManager        CATIPerfoToolsEditorFactory         libCATCafVisuOptions
+CATEditorManager2             CATIPerfoToolsEditorFactory         libCATCafVisuOptions
+
+
+
+
+CATVRSettings                 CATIUserSettings                    libCATCafVisuOptions
+CATUserSettingsManager        CATIVRSettingsFactory               libCATCafVisuOptions
+CATEditorManager2             CATIVRSettingsFactory               libCATCafVisuOptions
+
+
+
+
+CATVrmlSettings				        CATIUserSettings					          libCATCafVisuOptions
+CATUserSettingsManager        CATIVrmlSettingsFactory			        libCATCafVisuOptions
+
+
+
+
+CATCafGeneralSessionSettingCtrl  CATIAGeneralSessionSettingAtt     libCATIAApplicationFrame
+CATCafGeneralSessionSettingCtrl  CATICafGeneralSessionSettingAtt         libCATIAApplicationFrame
+CATCafGeneralSessionSettingCtrl  CATICreateInstance               libCATIAApplicationFrame
+CATCafGeneralSessionSettingCtrl  CATISysSettingController         libCATIAApplicationFrame
+CATUserSettingsManager    CATIGeneralSettingsFactory       libCATIAApplicationFrame
+CATGeneralSettings        CATIUserSettings        	       libCATIAApplicationFrame
+
+
+
+
+CATCafDocumentationSettingCtrl  CATIADocumentationSettingAtt     libCATCafDocumentation
+CATCafDocumentationSettingCtrl  CATICafDocumentationSettingAtt   libCATCafDocumentation
+CATCafDocumentationSettingCtrl  CATICreateInstance        libCATCafDocumentation
+CATCafDocumentationSettingCtrl  CATISysSettingController  libCATCafDocumentation
+CATUserSettingsManager        CATICafDocumentationEdtFactory      libCATCafDocumentation
+CATCafDocumentationEditor     CATIUserSettings        	          libCATCafDocumentation
+
+
+
+
+CATStatSettingsEditor	        CATIUserSettings        	          libCATIAApplicationFrame
+CATUserSettingsManager        CATIStatSettingsFactory             libCATIAApplicationFrame
+
+
+
+
+CATGeneralPerfoSettingsEditor CATIUserSettings        	          libCATIAApplicationFrame
+CATUserSettingsManager        CATIGeneralPerfoSettingsFactory     libCATIAApplicationFrame
+
+
+
+
+CATLicensing                  CATIUserSettings                    libCATCafLicensing
+CATUserSettingsManager        CATILicensingFactory                libCATCafLicensing
+CATEditorManager2             CATILicensingFactory                libCATCafLicensing
+
+
+
+
+CATDynLicensing               CATIUserSettings                    libCATCafDynLicensing
+CATUserSettingsManager        CATIDynLicensingFactory             libCATCafDynLicensing
+CATEditorManager2             CATIDynLicensingFactory             libCATCafDynLicensing
+
+
+
+
+CATTreeVizSettings		      CATIUserSettings	                  libCATIAApplicationFrame
+CATUserSettingsManager      CATITreeVizSettingsFactory          libCATIAApplicationFrame  
+CATEditorManager2	          CATITreeVizSettingsFactory          libCATIAApplicationFrame
+CATTreeManipSettings		    CATIUserSettings	                  libCATIAApplicationFrame
+CATUserSettingsManager      CATITreeManipSettingsFactory        libCATIAApplicationFrame  
+CATEditorManager2	          CATITreeManipSettingsFactory        libCATIAApplicationFrame  
+
+
+
+CATCafTreeSettingCtrl   CATIIniSettingManagment   libCATIAApplicationFrame
+CATCafTreeSettingCtrl   CATICafTreeSettingAtt     libCATIAApplicationFrame
+
+CATCafTreeVizManipSettingCtrl	CATISysSettingController	        libCATIAApplicationFrame
+CATCafTreeVizManipSettingCtrl	CATICreateInstance			        libCATIAApplicationFrame
+CATCafTreeVizManipSettingCtrl	CATICafTreeVizManipSettingAtt	    libCATIAApplicationFrame
+CATCafTreeVizManipSettingCtrl	CATIATreeVizManipSettingAtt         libCATIAApplicationFrame
+CATCafTreeVizManipSettingCtrl   CATIASettingController              libCATIAApplicationFrame  
+
+
+
+
+
+CATCafFilterSettingsEditor CATIUserSettings                    libCATIAApplicationFrame
+CATUserSettingsManager     CATICafFilterSettingsEditorFactory  libCATIAApplicationFrame  
+CATEditorManager2	         CATICafFilterSettingsEditorFactory  libCATIAApplicationFrame  
+CATCafFilterSettingCtrl    CATIIniSettingManagment             libCATIAApplicationFrame
+CATCafFilterSettingCtrl    CATICafFilterSettingAtt             libCATIAApplicationFrame
+
+
+
+
+CATUserSettingsManager         CATIPrintersToolsEditorFactory  libCATCafPrintToolsOptions
+CATEditorManager2              CATIPrintersToolsEditorFactory  libCATCafPrintToolsOptions
+CATPrintersToolsEditor         CATIUserSettings                libCATCafPrintToolsOptions
+CATPrtPrintersSettingCtrl      CATIPrtPrintersSettingAtt       libCATCafPrintCtrlToolsOptions
+CATPrtPrintersSettingCtrl      CATICreateInstance              libCATCafPrintCtrlToolsOptions
+CATPrtPrintersSettingCtrl      CATISysSettingController        libCATCafPrintCtrlToolsOptions
+CATPrtPrintersSettingCtrl      CATIASettingController          libCATCafPrintAutoCtrlToolsOptions
+CATPrtPrintersSettingCtrl      CATIAPrintersSettingAtt         libCATCafPrintAutoCtrlToolsOptions
+
+
+
+
+CATUserSettingsManager     CATIPublishToolsEditorFactory   libCATCafPublishToolsOptions
+CATEditorManager2          CATIPublishToolsEditorFactory   libCATCafPublishToolsOptions
+CATPublishToolsEditor      CATIUserSettings                libCATCafPublishToolsOptions
+CATPublishSettingCtrl      CATIPublshSettingAtt            libCATCafPublishCtrlToolsOptions
+CATPublishSettingCtrl      CATIIniSettingManagment         libCATCafPublishCtrlToolsOptions
+
+
+
+
+
+
+
+
+
+cgr                     CATICGRDocument             libCATIAApplicationFrame
+cgr                     CATI3DGeoVisu               libCATIAApplicationFrame
+cgr                     CATIPersistent              libCATIAApplicationFrame
+cgr                     CATInit                     libCATIAApplicationFrame
+cgr                     CATIEditor                  libCATIAApplicationFrame
+cgr											CATICGRDocumentEditRep	    libCATIAApplicationFrame
+cgr											CATIDocAlias								libCATIAApplicationFrame
+cgr											CATIUVRUnstream							libCATIAApplicationFrame
+cgr											CATICGRDocDRMMgt				    libCATIAApplicationFrame
+CD0CGR                  CATIWorkshop                libCATIAApplicationFrame
+CATApplicationFrame     CATICD0CGRWorkshopFactory   libCATIAApplicationFrame
+CGRErrorReporter        CATICreateInstance          libCATIAApplicationFrame 
+CGRErrorReporter        CATICGRErrorReporter        libCATIAApplicationFrame 
+
+
+
+
+
+
+
+
+wrl                     CATI3DGeoVisu               libCATIAApplicationFrame
+wrl                     CATIPersistent              libCATIAApplicationFrame
+wrl                     CATInit                     libCATIAApplicationFrame
+wrl                     CATIEditor                  libCATIAApplicationFrame
+
+
+
+
+
+
+
+
+hsf                     CATI3DGeoVisu               libCATIAApplicationFrame
+hsf                     LifeCycleObject             libCATIAApplicationFrame
+hsf                     CATIPersistent              libCATIAApplicationFrame
+hsf                     CATInit                     libCATIAApplicationFrame
+hsf                     CATIUuid                    libCATIAApplicationFrame
+
+
+
+
+
+
+
+CATFrmEditor			CATIFrmEditorOtherSelection libCATIAApplicationFrame
+
+
+
+
+
+
+
+CATEditorManager           CATIGraphicPropertiesEditorFactory libCATIAApplicationFrame
+CATGraphicPropertiesEditor CATIEditProperties                 libCATIAApplicationFrame
+CATVisManager              CATIVisuFilter                     libCATIAApplicationFrame
+CATVisManager              CATIVisuFilterOnCGR				  libCATIAApplicationFrame
+CATPathElement             CATIVisuAlias                      libCATIAApplicationFrame
+
+
+
+
+
+
+
+CATFrmEditor				CATIHideShow            libCATIAApplicationFrame
+CAT_1000_1					CATISelectShow			libCATIAApplicationFrame 
+CAT_1000_4					CATISelectShow			libCATIAApplicationFrame 
+CAT_28_1					CATISelectShow			libCATIAApplicationFrame 
+CATViewer					CATIAsmGraphicProperties libCATIAApplicationFrame
+CATBaseUnknown				CATIWriteBehavior        libCATIAApplicationFrame
+ASMPRODUCT					CATIWriteBehavior        libCATIAApplicationFrame
+CATViewer					CATIHideShow             libCATIAApplicationFrame
+CATCmdShow                  CATIRepeatableCommand    libCATIAApplicationFrame 
+
+
+
+
+
+
+
+
+CATFrmWindow	          CATIPrintable		    libCATCafPrint
+CATFrmNavigGraphicWindow  CATIPrintable		    libCATCafPrint
+CATFrmWindow	          CATIPrintables	    libCATCafPrint
+CATFrmNavigGraphicWindow  CATIPrintables	    libCATCafPrint
+CATDocument               CATIBatchPrintable        libCATPrintBatchUtility
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+CATV4ModelSearchEditor		CATISearchEditor		libCATCafSearchUI
+CATMultiselManager		CATIV4ModelSearchEditorFactory	libCATCafSearchUI
+
+CATTopologySearchEditor  CATISearchEditor    libCATCafSearchUI
+CATMultiselManager       CATITopologySearchEditorFactory	libCATCafSearchUI
+
+
+
+
+
+CATSearchDialog    CATISearchPanel            libCATCafSearchUI
+CATFrmEditor       CATIStandardPanelsFactory  libCATCafSearchUI
+
+
+
+
+
+CATSearchType     CATITypeDictionaryListener  libCATIAApplicationFrame
+
+
+
+
+CATMultiselManager   CATIIniSearchEngine         libCATIAApplicationFrame
+CATMultiselManager   CATICreateInstance          libCATIAApplicationFrame
+CATSearchContext     CATIIniSearchContext        libCATIAApplicationFrame
+CATSearchContext     CATICreateInstance          libCATIAApplicationFrame
+
+CATSearchBooleanAttributeCriteria     CATIIniSearchBooleanCriterion   libCATIAApplicationFrame
+CATSearchBooleanAttributeCriteria     CATICreateInstance              libCATIAApplicationFrame
+CATSearchColorCriteria                CATIIniSearchColorCriterion     libCATIAApplicationFrame
+CATSearchColorCriteria                CATICreateInstance              libCATIAApplicationFrame
+CATSearchCOMBINATIONCriteria          CATIIniSearchCombinationCriteria libCATIAApplicationFrame
+CATSearchCriteria                     CATIIniSearchCriterion           libCATIAApplicationFrame
+CATSearchCriteria                     CATICreateInstance              libCATIAApplicationFrame
+CATSearchDashedCriteria               CATIIniSearchDashedCriterion    libCATIAApplicationFrame
+CATSearchDashedCriteria               CATICreateInstance              libCATIAApplicationFrame
+CATSearchDimensionedAttributeCriteria CATIIniSearchDimensionCriterion libCATIAApplicationFrame
+CATSearchDimensionedAttributeCriteria CATICreateInstance              libCATIAApplicationFrame
+CATSearchEnumereAttributeCriteria     CATIIniSearchListingCriterion   libCATIAApplicationFrame
+CATSearchEnumereAttributeCriteria     CATICreateInstance              libCATIAApplicationFrame
+CATCafSearchServices                  CATIIniSearchServices           libCATIAApplicationFrame
+CATCafSearchServices                  CATICreateInstance              libCATIAApplicationFrame
+CATSearchGraphNameCriteria            CATIIniSearchGraphNameCriterion libCATIAApplicationFrame
+CATSearchGraphNameCriteria            CATICreateInstance              libCATIAApplicationFrame
+CATSearchIntAttributeCriteria         CATIIniSearchIntegerCriterion   libCATIAApplicationFrame
+CATSearchIntAttributeCriteria         CATICreateInstance              libCATIAApplicationFrame
+CATSearchINTERCriteria                CATIIniSearchAndCriterion       libCATIAApplicationFrame
+CATSearchINTERCriteria                CATICreateInstance              libCATIAApplicationFrame
+CATSearchLayerCriteria                CATIIniSearchLayerCriterion     libCATIAApplicationFrame
+CATSearchLayerCriteria                CATICreateInstance              libCATIAApplicationFrame
+CATSearchNameCriteria                 CATIIniSearchNameCriterion      libCATIAApplicationFrame
+CATSearchNameCriteria                 CATICreateInstance              libCATIAApplicationFrame
+CATSearchRealAttributeCriteria        CATIIniSearchRealCriterion      libCATIAApplicationFrame
+CATSearchRealAttributeCriteria        CATICreateInstance              libCATIAApplicationFrame
+CATSearchSetCriteria                  CATIIniSearchSelectionSetCriterion libCATIAApplicationFrame
+CATSearchSetCriteria                  CATICreateInstance                 libCATIAApplicationFrame
+CATSearchStringAttributeCriteria      CATIIniSearchStringCriterion    libCATIAApplicationFrame
+CATSearchStringAttributeCriteria      CATICreateInstance              libCATIAApplicationFrame
+CATSearchSOUSTCriteria                CATIIniSearchExceptCriterion    libCATIAApplicationFrame
+CATSearchSOUSTCriteria                CATICreateInstance              libCATIAApplicationFrame
+CATSearchSVisibilityCriteria          CATIIniSearchSVisibilityCriterion libCATIAApplicationFrame
+CATSearchSVisibilityCriteria          CATICreateInstance              libCATIAApplicationFrame
+CATSearchSymbolCriteria               CATIIniSearchSymbolCriterion    libCATIAApplicationFrame
+CATSearchSymbolCriteria               CATICreateInstance              libCATIAApplicationFrame
+CATSearchTypeCriteria                 CATIIniSearchTypeCriterion      libCATIAApplicationFrame
+CATSearchTypeCriteria                 CATICreateInstance              libCATIAApplicationFrame
+CATSearchUNIONCriteria                CATIIniSearchOrCriterion        libCATIAApplicationFrame
+CATSearchUNIONCriteria                CATICreateInstance              libCATIAApplicationFrame
+CATSearchUserAttributeCriteria        CATIIniSearchUserCriterion      libCATIAApplicationFrame
+CATSearchUserAttributeCriteria        CATICreateInstance              libCATIAApplicationFrame
+CATSearchVisibilityCriteria           CATIIniSearchVisibilityCriterion libCATIAApplicationFrame
+CATSearchVisibilityCriteria           CATICreateInstance              libCATIAApplicationFrame
+CATSearchWeightCriteria               CATIIniSearchWeightCriterion    libCATIAApplicationFrame
+CATSearchWeightCriteria               CATICreateInstance              libCATIAApplicationFrame
+CATTypeCriteriaForTopology            CATIIniSearchTopologyCriterion  libCATIAApplicationFrame
+CATTypeCriteriaForTopology            CATICreateInstance              libCATIAApplicationFrame
+CATTypeCriteriaForV4Model             CATIIniSearchV4ModelCriterion   libCATIAApplicationFrame
+CATTypeCriteriaForV4Model             CATICreateInstance              libCATIAApplicationFrame
+
+
+
+
+
+
+
+
+CATApplicationFrame     CATIPrintMethods        libCATCafPrint
+
+
+
+
+
+
+
+cgm                     CATIPersistent		libCATCafCGMDocument
+cgm                     CATInit			libCATCafCGMDocument
+cgm                     CATIEditor		libCATCafCGMDocument
+cgm                     CATI2DGeoVisu		libCATCafCGMDocument
+cgm			CATICGMVisu		libCATCafCGMDocument
+cgm			CATIVisu		libCATCafCGMDocument
+cgm			LifeCycleObject		libCATCafCGMDocument
+cgm			CATIModelEvents		libCATCafCGMDocument
+cgm			CATIDocAlias		libCATCafCGMDocument
+CATCGMWindow            CATIPrintable		libCATCafCGMDocument
+CATCafCGM               CATIWorkshop                libCATCafCGMDocument
+CATApplicationFrame     CATICafCGMWorkshopFactory   libCATCafCGMDocument
+
+
+
+
+
+
+
+ps                      CATIPersistent		libCATCafPSDocument
+ps                      CATInit			libCATCafPSDocument
+ps                      CATIEditor		libCATCafPSDocument
+ps                      CATI2DGeoVisu		libCATCafPSDocument
+ps			                CATIPSVisu		libCATCafPSDocument
+ps			                CATIVisu		libCATCafPSDocument
+ps			                LifeCycleObject		libCATCafPSDocument
+ps			                CATIModelEvents		libCATCafPSDocument
+
+
+
+CATPSWindow             CATIPrintable		libCATCafPSDocument
+CATCafPS                CATIWorkshop                libCATCafPSDocument
+CATApplicationFrame     CATICafPSWorkshopFactory   libCATCafPSDocument
+
+
+
+
+
+
+
+gl                     CATIPersistent		libCATCafHPGLDocument
+gl                     CATInit		        libCATCafHPGLDocument
+gl                     CATIEditor		libCATCafHPGLDocument
+gl                     CATI2DGeoVisu		libCATCafHPGLDocument
+gl		       CATIHPGLVisu		libCATCafHPGLDocument
+gl		       CATIVisu		        libCATCafHPGLDocument
+gl		       LifeCycleObject	        libCATCafHPGLDocument
+gl		       CATIModelEvents	        libCATCafHPGLDocument
+
+
+
+hpgl                     CATIPersistent		libCATCafHPGLDocument
+hpgl                     CATInit		        libCATCafHPGLDocument
+hpgl                     CATIEditor		libCATCafHPGLDocument
+hpgl                     CATI2DGeoVisu		libCATCafHPGLDocument
+hpgl		       CATIHPGLVisu		libCATCafHPGLDocument
+hpgl		       CATIVisu		        libCATCafHPGLDocument
+hpgl		       LifeCycleObject	        libCATCafHPGLDocument
+hpgl		       CATIModelEvents	        libCATCafHPGLDocument
+
+
+
+gl2                    CATIPersistent		libCATCafHPGLDocument
+gl2                    CATInit		        libCATCafHPGLDocument
+gl2                    CATIEditor		libCATCafHPGLDocument
+gl2                    CATI2DGeoVisu		libCATCafHPGLDocument
+gl2		       CATIHPGLVisu		libCATCafHPGLDocument
+gl2		       CATIVisu		        libCATCafHPGLDocument
+gl2		       LifeCycleObject	        libCATCafHPGLDocument
+gl2		       CATIModelEvents	        libCATCafHPGLDocument
+gl2			CATIDocAlias		libCATCafHPGLDocument
+CATHPGLWindow         CATIPrintable		   libCATCafHPGLDocument
+CATCafHPGL            CATIWorkshop               libCATCafHPGLDocument
+CATApplicationFrame   CATICafHPGLWorkshopFactory   libCATCafHPGLDocument
+
+
+
+
+
+
+
+svg					    CATIPersistent				libCATCafSVGDocument
+svg					    CATInit						libCATCafSVGDocument
+svg					    CATIEditor					libCATCafSVGDocument
+svg					    CATI2DGeoVisu				libCATCafSVGDocument
+svg						CATICafSVGVisu				libCATCafSVGDocument
+svg						CATIVisu					libCATCafSVGDocument
+svg						LifeCycleObject				libCATCafSVGDocument
+svg						CATIModelEvents				libCATCafSVGDocument
+svg						CATIDocAlias				libCATCafSVGDocument
+CATCafSVGWindow         CATIPrintable				libCATCafSVGDocument
+CATCafSVG               CATIWorkshop                libCATCafSVGDocument
+CATApplicationFrame     CATICafSVGWorkshopFactory   libCATCafSVGDocument
+
+
+
+
+
+
+
+CATRaster           CATIPersistent                  libCATCafRasterDocument
+CATRaster           CATInit                         libCATCafRasterDocument
+CATRaster           CATIEditor                      libCATCafRasterDocument
+CATRaster           CATIRasterVisu                  libCATCafRasterDocument
+CATRaster           CATIVisu                        libCATCafRasterDocument
+CATRaster           LifeCycleObject                 libCATCafRasterDocument
+CATRaster           CATIDataObject                  libCATCafRasterDocument
+CATRaster           CATIDocumentProvider            libCATCafRasterDocument
+CATRasterDocument   CATIDataConvert                 libCATCafRasterDocument
+CATRasterWindow     CATIPrintable                   libCATCafRasterDocument
+CATCafRaster        CATIWorkshop                    libCATCafRasterDocument
+CATApplicationFrame CATICafRasterWorkshopFactory    libCATCafRasterDocument
+
+
+
+
+
+
+
+CATFrmEditor			CATISoftKeyboardFactory		libCATCafSoftKeyboard
+CATPanelSoftKeyboard	CATISoftKeyboard			libCATCafSoftKeyboard
+CATCafIndicator         CATIIndicator               libCATCafSoftKeyboard
+CATCafIndicator         CATISymbol                  libCATCafSoftKeyboard
+CATISO                  CATISymbolManager           libCATCafSoftKeyboard
+CATCafArrow             CATIArrow                   libCATCafSoftKeyboard
+CATCafArrow             CATISymbol                  libCATCafSoftKeyboard
+CATCaf3DISO             CATExtIVisu                 libCATCafSoftKeyboard
+
+
+
+
+
+
+
+CATDocument     CATIIniDocumentLayersDefinition   libCATIAApplicationFrame
+CATDocument     CATIIniDocumentFiltersDefinition  libCATIAApplicationFrame
+CATDocument     CATIDocumentLayersDefinition      libCATIAApplicationFrame
+CATDocument     CATIDocumentFiltersDefinition     libCATIAApplicationFrame
+CATLayer        CATIIniLayer                      libCATIAApplicationFrame
+CATLayersFilter CATIIniLayersFilter               libCATIAApplicationFrame
+
+
+
+
+
+
+
+
+CAT_1000_4              CATIUIActivate                  libCATIAApplicationFrame
+CAT2DHandleManager      CATI2DCustomHandle              libCATIAApplicationFrame
+CAT2DMoveAgent          CATI2DCustomHandleManager       libCATIAApplicationFrame
+CAT2DMoveAgent          CATI2DMoveConfiguration         libCATIAApplicationFrame
+CAT2DViewpoint          CATIABase                       libCATCafAutomation
+CAT3DBoxHandle          CATI3DGeoVisu                   libCATIAApplicationFrame
+CAT3DBoxHandle          CATIVisu                        libCATIAApplicationFrame
+CAT3DHandleManager      CATI3DCustomHandle              libCATIAApplicationFrame
+CAT3DMoveAgent          CATI3DCustomHandleManager       libCATIAApplicationFrame
+CAT3DMoveAgent          CATI3DMoveConfiguration         libCATIAApplicationFrame
+CAT3DViewpoint          CATIABase                       libCATCafAutomation
+CATApplicationFrame     CATIABase                       libCATCafAutostart
+CATApplicationFrame     CATIGenTrac                     libCATCafAutostart
+CATBaseUnknown          CATISearch                      libCATIAApplicationFrame
+CATCameraFeat           CATIACamera                     libCATCafAutomation
+CATDocument             CATIABase                       libCATCafAutomation
+CATDocument             CATIACollection                 libCATCafAutomation
+CATExtISelectShow       CATISelectShow                  libCATIAApplicationFrame
+CATFrm2DCamera          CATIACamera                     libCATCafAutomation
+CATFrm3DCamera          CATIACamera                     libCATCafAutomation
+CATFrmCamera            CATIGenTrac                     libCATCafAutomation
+CATFrmEditor            CATIABase                       libCATCafAutomation
+CATFrmNavigGraphicWindow CATIABase                      libCATCafAutomation
+CATFrmWindow            CATIABase                       libCATCafAutomation
+CATFrmWindow            CATIACollection                 libCATCafAutomation
+CATGliderAgent          CATI3DCompass                   libCATIAApplicationFrame
+CATGliderAgent          CATI3DCompassPilot              libCATIAApplicationFrame
+CATGliderAgent          CATI3DCompassVisibility         libCATIAApplicationFrame
+CATGliderHandle         CATI3DGeoVisu                   libCATIAApplicationFrame
+CATGliderHandle         CATIVisu                        libCATIAApplicationFrame
+CATIALightSourceImpl    CATIABase                       libCATCafAutomation
+CATIALightSourceImpl    CATIALightSource                libCATCafAutomation
+CATNavigation3DViewer   CATIABase                       libCATCafAutomation
+CATNavigation3DViewer   CATIAViewer                     libCATCafAutomation
+CATPreSnapper           CATI3DGeoVisu                   libCATIAApplicationFrame
+CATPreSnapper           CATIVisu                        libCATIAApplicationFrame
+CATPrintParameters      CATIABase                       libCATCafAutomation
+CATViewer               CATIACollection                 libCATCafAutomation
+cgr                     CATIUuid                        libCATIAApplicationFrame
+cgr                     CATIVisu                        libCATIAApplicationFrame
+cgr                     LifeCycleObject                 libCATIAApplicationFrame
+wrl                     CATIVisu                        libCATIAApplicationFrame
+wrl                     LifeCycleObject                 libCATIAApplicationFrame
+CATHeaderGraphicProperties  CATIHeaderGraphicProperties libCATIAApplicationFrame
+CATECmdSelect           CATICmdSelect                   libCATIAApplicationFrame
+CATSelectArrowHeader    CATICmdSelect                   libCATIAApplicationFrame
+
+CATIAFileSystemImpl		CATIAFileSystem					libCATCafAutostart
+CATIAFileImpl   			CATIAFile					    	libCATCafAutostart
+CATIAFolderImpl	  		CATIAFolder			  			libCATCafAutostart
+CATIAFilesImpl		  	CATIAFiles		  				libCATCafAutostart
+CATIAFoldersImpl		  CATIAFolders  					libCATCafAutostart
+CATIATextStreamImpl		CATIATextStream					libCATCafAutostart
+CATIASelectedElementImpl  CATIASelectedElement  libCATCafAutomation     
+
+
+
+
+
+
+
+CATLinetypeToolsFrame CATIStandardUserFrame libCATCafVisuOptions
+CATStd_LinetypeEditor CATIStandardUserEditorFactory libCATCafVisuOptions
+
+CATSysSettingController		CATIAutomationResolution	libCATCafAutostart
+CATApplicationFrame		CATIASettingControllers		libCATCafAutostart
+
+
+
+
+
+
+
+
+cgr_wrl                 CATIExportTypeManager   libCATIAApplicationFrame   
+model_wrl               CATIExportTypeManager   libCATIAApplicationFrame   
+prt_wrl                 CATIExportTypeManager   libCATIAApplicationFrame   
+mf1_wrl                 CATIExportTypeManager   libCATIAApplicationFrame   
+mf_wrl                  CATIExportTypeManager   libCATIAApplicationFrame   
+CDMAmodel_wrl           CATIExportTypeManager   libCATIAApplicationFrame
+
+
+
+
+
+
+
+CATCafErrorLogAddinImp CATIAfrGeneralWksAddin libCATCafErrorLogAddin
+CATErrorlogCommandSet	CATICommandSet			libCATCafErrorLogAddin
+
+
+
+
+
+
+CATVizVisualizationSettingCtrl   CATIASettingController        libCATCafVisuOptions
+CATVizVisualizationSettingCtrl   CATIAVisualizationSettingAtt  libCATCafVisuOptions
+
+CATFrmNavigGraphicWindow         CATIWindowWithGraph           libCATIAApplicationFrame
+
+
+
+
+
+
+CATVisVrmlSettingCtrl   CATIASettingController        libCATCafVisuOptions
+CATVisVrmlSettingCtrl   CATIAVrmlSettingAtt  libCATCafVisuOptions
+
+
+
+
+
+
+CATCafPCSAddinImp CATIAfrGeneralWksAddin libCATCafPCSAddin
+CATPCSCommandSet	CATICommandSet			libCATCafPCSAddin
+
+
+
+
+
+
+CATCafSearchSettingCtrl	  CATISysSettingController	   libCATIAApplicationFrame   
+CATCafSearchSettingCtrl	  CATICreateInstance		   libCATIAApplicationFrame   
+CATCafSearchSettingCtrl	  CATICafSearchSettingAtt	   libCATIAApplicationFrame   
+CATCafSearchSettingCtrl	  CATIASearchSettingAtt		   libCATIAApplicationFrame   
+CATUserSettingsManager    CATICafSearchPPEditorFactory libCATIAApplicationFrame   
+CATCafSearchPPEditor      CATIUserSettings             libCATIAApplicationFrame   
+
+CATCafViewSelector3DISO   CATI3DGeoVisu               libCATIAApplicationFrame
+
+
+HelloWorldGeneralWksAddin CATIWorkbenchAddin libHelloWorldModule
+HelloWorldGeneralWksAddin CATIAfrGeneralWksAddin libHelloWorldModule

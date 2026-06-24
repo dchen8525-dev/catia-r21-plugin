@@ -1,0 +1,19 @@
+# Build artifacts
+win_b64/
+.build-exit-code
+*.log
+rade_*.log
+
+# IDE/Editor
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Windows
+Thumbs.db
+desktop.ini
