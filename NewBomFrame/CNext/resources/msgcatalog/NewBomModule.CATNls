@@ -1,10 +1,64 @@
+# =============================================================================
+# NewBomModule.CATNls
+# CATIA CAA Resource File - Define Menu Titles and Help Text
+# =============================================================================
+#
+# What is NLS File?
+# NLS (National Language Support) file is CATIA's localization resource file.
+# It defines display text for menus, toolbars, commands.
+#
+# File Location:
+# Source: NewBomFrame/CNext/resources/msgcatalog/NewBomModule.CATNls
+# Installed: win_b64/resources/msgcatalog/NewBomModule.CATNls
+#
+# IMPORTANT: File Encoding must be GBK for Chinese Windows!
+# UTF-8 encoding will cause Chinese to display as garbage.
+# In Visual Studio, save as "Chinese Simplified (GBK) - Code Page 936"
+#
+# NLS File Format:
+# Identifier.Title    = "Menu Title";
+# Identifier.ShortHelp = "Short Help (mouse hover)";
+# Identifier.LongHelp  = "Long Help (tooltip)";
+#
+# Identifier Source:
+# Identifiers correspond to menu/starters created in CreateToolbars():
+#   - NewBomTopMnu: NewAccess(..., NewBomTopMnu)
+#   - NewBomNumberMgtMnu: NewAccess(..., NewBomNumberMgtMnu)
+#   - NewBomCmd: SetAccessCommand(..., "NewBomCmd")
+#
+# Note:
+# Titles set via BuildFromUCChar in CreateToolbars() override NLS definitions.
+# So menu titles here won't be used (we set them in code).
+# But command Title/ShortHelp/LongHelp still effective.
+#
+# =============================================================================
+# Command Title Definitions
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# NewBomCmd - "Get New Number" Command
+# -----------------------------------------------------------------------------
 NewBomCmd.Title = "取新编号";
 NewBomCmd.ShortHelp = "显示取号对话框";
 NewBomCmd.LongHelp = "显示零件取号对话框。";
 
+# -----------------------------------------------------------------------------
+# NewBomAboutCmd - "About Plugin" Command
+# -----------------------------------------------------------------------------
 NewBomAboutCmd.Title = "关于本插件";
 NewBomAboutCmd.ShortHelp = "显示插件版本信息";
 NewBomAboutCmd.LongHelp = "显示件取号插件版本信息。";
+
+# -----------------------------------------------------------------------------
+# Menu Title Definitions
+# -----------------------------------------------------------------------------
+# Note: These titles are set via BuildFromUCChar in CreateToolbars(),
+# so NLS definitions won't be used. Here only for reference.
+#
+# To use NLS for titles:
+#   1. Remove SetTitle() calls in CreateToolbars()
+#   2. Ensure NLS file uses correct encoding (GBK)
+#   3. Ensure NLS file properly deployed
 
 NewBomTopMnu.Title = "NewBOM";
 NewBomNumberMgtMnu.Title = "编号管理";

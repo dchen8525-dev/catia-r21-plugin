@@ -1,6 +1,105 @@
-# CATIA CAA Hello World Plugin Dictionary
+# =============================================================================
+# NewBomFrame.dico
+# CATIA CAA Dictionary File - Register Interface Implementations
+# =============================================================================
+#
+# What is a Dictionary File?
+# Dictionary file is the core registry of CATIA component system. It tells CATIA:
+#   - Which interface is implemented by which class
+#   - Which DLL contains the implementation class
+#
+# File Location:
+# Source: NewBomFrame/CNext/code/dictionary/NewBomFrame.dico
+# Installed: win_b64/code/dictionary/NewBomFrame.dico
+#
+# Dictionary File Format:
+# ImplementationClassName    InterfaceName    DLLName
+#
+# How it works:
+# When CATIA starts:
+#   1. Scan all .dico files in dictionary directories
+#   2. Parse interface registration info
+#   3. When needing an interface, find implementation class in dictionary
+#   4. Load corresponding DLL
+#   5. Create implementation class instance
+#
+# This file's purpose:
+# Register NewBomGeneralWksAddin implementing two interfaces:
+#   - CATIWorkbenchAddin: Workshop addin interface
+#   - CATIAfrGeneralWksAddin: General workshop addin interface
+#
+# =============================================================================
 # COPYRIGHT Dassault Systemes 2024
 
-# Hello World General Workshop Add-in
+# -----------------------------------------------------------------------------
+# General Workshop Addin Interface Registration
+# -----------------------------------------------------------------------------
+# Format: ImplementationType InterfaceType DLLName
+#
+# First line:
+#   NewBomGeneralWksAddin  CATIWorkbenchAddin  libNewBomModule
+#   - NewBomGeneralWksAddin: Implementation type's "late type" name
+#     (This is the 4th parameter in CATImplementClass)
+#   - CATIWorkbenchAddin: Workshop addin interface
+#   - libNewBomModule: DLL name containing implementation
+#
+# What is Late Type?
+# Late type is special implementation type for extending interfaces.
+# In NewBomAddin.cpp:
+#   CATImplementClass(NewBomAddin,
+#                     DataExtension,        <- Extension type
+#                     CATBaseUnknown,
+#                     NewBomGeneralWksAddin <- Late type name (matches dictionary)
+#                    );
+#
+# Why two lines?
+# Same implementation class can implement multiple interfaces:
+#   - CATIWorkbenchAddin: Basic workshop addin interface
+#   - CATIAfrGeneralWksAddin: General workshop addin interface (more specific)
+#
+# CATIA will use appropriate interface as needed.
+#
+
+# Workshop addin interface registration (basic interface)
 NewBomGeneralWksAddin	CATIWorkbenchAddin	libNewBomModule
+
+# General workshop addin interface registration (our main interface)
 NewBomGeneralWksAddin	CATIAfrGeneralWksAddin	libNewBomModule
+
+# =============================================================================
+# Interface Registration Flow Diagram
+# =============================================================================
+#
+# CATIA Startup Flow:
+#
+# 1. CATIA scans dictionary files
+#    |
+# 2. Finds NewBomGeneralWksAddin registration
+#    |
+# 3. When needing CATIAfrGeneralWksAddin interface
+#    |
+# 4. Look up dictionary: NewBomGeneralWksAddin -> libNewBomModule
+#    |
+# 5. Load NewBomModule.dll
+#    |
+# 6. Call DLL's class factory
+#    |
+# 7. Create NewBomAddin instance (via TIE_CATIAfrGeneralWksAddin)
+#    |
+# 8. Call CreateCommands() to register command headers
+#    |
+# 9. Call CreateToolbars() to create menu structure
+#    |
+# 10. User sees NewBOM menu
+#
+# =============================================================================
+# Debug Tips
+# =============================================================================
+#
+# If menu doesn't appear, check:
+#   1. .dico file correctly copied to win_b64/code/dictionary/
+#   2. Dictionary format correct (tab-separated, not spaces)
+#   3. DLL name correct (lib prefix, no suffix)
+#   4. Implementation name matches late type in CATImplementClass
+#
+# =============================================================================
