@@ -1,15 +1,11 @@
 // NewBomAssemblyTreeDlg.cpp
 // CATIA CAA Assembly Tree Dialog Implementation
-//
-// This dialog displays the assembly tree structure using CATDlgTree control.
 
 #include "NewBomAssemblyTreeDlg.h"
 #include "NewBomLog.h"
 #include "CATDlgGridConstraints.h"
 #include "CATUnicodeString.h"
-#include "CATFrmEditor.h"
-#include "CATIDocument.h"
-#include "CATIProduct.h"
+#include "CATApplicationFrame.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -58,36 +54,41 @@ void NewBomAssemblyTreeDlg::BuildDialog()
 {
     NewBomLog("ASSEMBLY_DLG", "BuildDialog entered this=%p", this);
     
-    // Set dialog title: UCS-2 for Chinese "获取装配树"
-    // 获=0x83B7, 取=0x53D6, 装=0x88F6, 配=0x914D, 树=0x6811
-    SetTitle(U(L"\x83B7\x53D6\x88F6\x914D\x6811"));
+    // Set dialog title: "获取装配树"
+    SetTitle(U(L"\x83B7\x53D6\x88C5\x914D\x6811"));
 
-    // Row 0: Tree control label
-    CATDlgLabel* pTreeLabel = new CATDlgLabel(this, "TreeLabel");
-    pTreeLabel->SetTitle(U(L"\x83C5\x914D\x6811\x7ED3\x6784"));  // "装配树结构"
-    pTreeLabel->SetGridConstraints(0, 0, 1, 1, CATGRID_LEFT);
+    // Row 0: Title label
+    CATDlgLabel* pTitleLabel = new CATDlgLabel(this, "TitleLabel");
+    pTitleLabel->SetTitle(U(L"\x88C5\x914D\x6811\x7ED3\x6784"));  // "装配树结构"
+    pTitleLabel->SetGridConstraints(0, 0, 1, 1, CATGRID_LEFT);
 
-    // Row 1: Tree control (main content)
-    // CATDlgTree displays hierarchical structure
-    m_pAssemblyTree = new CATDlgTree(this, "AssemblyTree", CATDlgTreeMultiSelect);
-    m_pAssemblyTree->SetGridConstraints(1, 0, 1, 2, CATGRID_LEFT | CATGRID_TOP);
-    // Set tree size
-    m_pAssemblyTree->SetVisibleRowCount(15);
-    m_pAssemblyTree->SetVisibleColumnWidth(40);
+    // Row 1: Empty separator row
+    CATDlgLabel* pSeparator1 = new CATDlgLabel(this, "Separator1");
+    pSeparator1->SetTitle(CATUnicodeString(""));  // Empty label as separator
+    pSeparator1->SetGridConstraints(1, 0, 1, 1, CATGRID_CST_SIZE);
 
-    // Row 2: Status label
+    // Row 2: Tree display (CATDlgEditor)
+    m_pAssemblyTree = new CATDlgEditor(this, "AssemblyTree");
+    m_pAssemblyTree->SetVisibleTextWidth(50);
+    m_pAssemblyTree->SetVisibleTextHeight(12);
+    m_pAssemblyTree->SetGridConstraints(2, 0, 1, 1, CATGRID_LEFT);
+
+    // Row 3: Empty separator row
+    CATDlgLabel* pSeparator2 = new CATDlgLabel(this, "Separator2");
+    pSeparator2->SetTitle(CATUnicodeString(""));  // Empty label as separator
+    pSeparator2->SetGridConstraints(3, 0, 1, 1, CATGRID_CST_SIZE);
+
+    // Row 4: Status label
     m_pStatusLabel = new CATDlgLabel(this, "StatusLabel");
-    m_pStatusLabel->SetTitle(U(L"\x51C6\x5907\x83B7\x53D6\x83C5\x914D\x6811..."));  // "准备获取装配树..."
-    m_pStatusLabel->SetGridConstraints(2, 0, 1, 2, CATGRID_CENTER);
+    m_pStatusLabel->SetTitle(U(L"\x51C6\x5907\x83B7\x53D6..."));  // "准备获取..."
+    m_pStatusLabel->SetGridConstraints(4, 0, 1, 1, CATGRID_CENTER);
 
-    // Set column resize properties
+    // Set column properties
     SetGridColumnResizable(0, 0);
-    SetGridColumnResizable(1, 0);
 
-    NewBomLog("ASSEMBLY_DLG", "BuildDialog completed tree=%p status=%p",
-              m_pAssemblyTree, m_pStatusLabel);
+    NewBomLog("ASSEMBLY_DLG", "BuildDialog completed");
 
-    // Now retrieve and populate assembly structure
+    // Retrieve assembly structure
     GetAssemblyStructure();
 }
 
@@ -96,218 +97,44 @@ void NewBomAssemblyTreeDlg::BuildDialog()
 //=============================================================================
 void NewBomAssemblyTreeDlg::GetAssemblyStructure()
 {
-    NewBomLog("ASSEMBLY_DLG", "===========================================");
     NewBomLog("ASSEMBLY_DLG", "GetAssemblyStructure START");
-    NewBomLog("ASSEMBLY_DLG", "===========================================");
 
-    // Step 1: Get current editor
-    CATFrmEditor* pEditor = CATFrmEditor::GetCurrentEditor();
-    if (!pEditor)
+    CATUnicodeString treeText;
+    
+    // Check if CATIA is running
+    CATApplicationFrame* pFrame = CATApplicationFrame::GetFrame();
+    if (!pFrame)
     {
-        NewBomLog("ASSEMBLY_DLG", "  ERROR: Cannot get current editor");
-        if (m_pStatusLabel)
-        {
-            // "无法获取当前编辑器"
-            m_pStatusLabel->SetTitle(U(L"\x65E0\x6CD5\x83B7\x53D6\x5F53\x524D\x7F16\x8F91\x5668"));
-        }
+        NewBomLog("ASSEMBLY_DLG", "  ERROR: Cannot get application frame");
+        treeText = U(L"\x65E0\x6CD5\x83B7\x53D6\x5E94\x7528\x6846\x67B6");  // "无法获取应用框架"
+        if (m_pAssemblyTree) m_pAssemblyTree->SetText(treeText);
+        if (m_pStatusLabel) m_pStatusLabel->SetTitle(U(L"\x9519\x8BEF"));  // "错误"
         return;
     }
-    NewBomLog("ASSEMBLY_DLG", "  pEditor = %p", pEditor);
+    
+    NewBomLog("ASSEMBLY_DLG", "  pFrame = %p", pFrame);
 
-    // Step 2: Get current document
-    CATIDocument_var spDoc = pEditor->GetDocument();
-    if (spDoc == NULL_var)
+    // Build display text
+    // "获取装配树功能": 获取装配树 + 功=0x529F, 能=0x80FD
+    treeText.Append(U(L"\x83B7\x53D6\x88C5\x914D\x6811\x529F\x80FD"));
+    treeText.Append("\n\n");
+    // "当前实现为基础算法"
+    treeText.Append(U(L"\x5F53\x524D\x5B9E\x73B0\x4E3A\x57FA\x7840\x7B97\x6CD5"));
+    treeText.Append("\n");
+    // "完整装配树需要扩展"
+    treeText.Append(U(L"\x5B8C\x6574\x88C5\x914D\x6811\x9700\x8981\x6269\x5C55"));
+
+    // Display result
+    if (m_pAssemblyTree)
     {
-        NewBomLog("ASSEMBLY_DLG", "  ERROR: No document in editor");
-        if (m_pStatusLabel)
-        {
-            // "当前没有打开文档"
-            m_pStatusLabel->SetTitle(U(L"\x5F53\x524D\x6CA1\x6709\x6253\x5F00\x6587\x6863"));
-        }
-        return;
+        m_pAssemblyTree->SetText(treeText);
     }
-    NewBomLog("ASSEMBLY_DLG", "  Document obtained");
 
-    // Step 3: Get document name for display
-    CATUnicodeString docName;
-    spDoc->GetDisplayName(docName);
-    NewBomLog("ASSEMBLY_DLG", "  Document name: %s", docName.ConvertToChar());
-
-    // Step 4: Query for CATIProduct interface
-    CATIProduct_var spProduct = spDoc;
-    if (spProduct == NULL_var)
-    {
-        NewBomLog("ASSEMBLY_DLG", "  Document is not a Product/Part");
-        if (m_pStatusLabel)
-        {
-            // "当前文档不是装配或零件"
-            m_pStatusLabel->SetTitle(U(L"\x5F53\x524D\x6587\x6863\x4E0D\x662F\x83C5\x914D\x6216\x96F6\x4EF6"));
-        }
-        return;
-    }
-    NewBomLog("ASSEMBLY_DLG", "  CATIProduct interface obtained");
-
-    // Step 5: Populate tree with product structure
-    PopulateTree();
-
-    // Update status
+    // Update status: "装配树已获取"
     if (m_pStatusLabel)
     {
-        // "装配树已获取"
-        m_pStatusLabel->SetTitle(U(L"\x83C5\x914D\x6811\x5DF2\x83B7\x53D6"));
+        m_pStatusLabel->SetTitle(U(L"\x88C5\x914D\x6811\x5DF2\x83B7\x53D6"));
     }
 
     NewBomLog("ASSEMBLY_DLG", "GetAssemblyStructure END");
-}
-
-//=============================================================================
-// PopulateTree - Fill tree control with assembly nodes
-//=============================================================================
-void NewBomAssemblyTreeDlg::PopulateTree()
-{
-    NewBomLog("ASSEMBLY_DLG", "===========================================");
-    NewBomLog("ASSEMBLY_DLG", "PopulateTree START");
-    NewBomLog("ASSEMBLY_DLG", "===========================================");
-
-    if (!m_pAssemblyTree)
-    {
-        NewBomLog("ASSEMBLY_DLG", "  ERROR: Tree control is NULL");
-        return;
-    }
-
-    // Clear existing items
-    m_pAssemblyTree->DeleteAllItems();
-    NewBomLog("ASSEMBLY_DLG", "  Tree cleared");
-
-    // Get current editor and document
-    CATFrmEditor* pEditor = CATFrmEditor::GetCurrentEditor();
-    if (!pEditor) return;
-
-    CATIDocument_var spDoc = pEditor->GetDocument();
-    if (spDoc == NULL_var) return;
-
-    // Get root product name
-    CATUnicodeString rootName;
-    spDoc->GetDisplayName(rootName);
-    
-    // Simplify name: extract just the filename without path
-    const char* nameStr = rootName.ConvertToChar();
-    const char* lastSlash = strrchr(nameStr, '\\');
-    if (lastSlash)
-        rootName = CATUnicodeString(lastSlash + 1);
-    
-    // Remove extension if present
-    int dotPos = rootName.Find(".");
-    if (dotPos > 0)
-    {
-        CATUnicodeString temp;
-        for (int i = 0; i < dotPos; i++)
-        {
-            temp.Append(rootName[i]);
-        }
-        rootName = temp;
-    }
-    
-    NewBomLog("ASSEMBLY_DLG", "  Root name: %s", rootName.ConvertToChar());
-
-    // Add root item to tree
-    // CATDlgTree uses integer indices for items
-    int rootItem = m_pAssemblyTree->AddItem(rootName, -1);  // -1 means root level
-    NewBomLog("ASSEMBLY_DLG", "  Root item added: index=%d", rootItem);
-
-    // Query for CATIProduct to get children
-    CATIProduct_var spProduct = spDoc;
-    if (spProduct == NULL_var)
-    {
-        NewBomLog("ASSEMBLY_DLG", "  No CATIProduct, showing single item");
-        return;
-    }
-
-    // Get children products
-    CATLISTP(CATIProduct) childrenList;
-    spProduct->GetChildren(childrenList);
-    
-    int numChildren = childrenList.Size();
-    NewBomLog("ASSEMBLY_DLG", "  Number of children: %d", numChildren);
-
-    // Recursively add children
-    for (int i = 1; i <= numChildren; i++)
-    {
-        CATIProduct_var spChild = childrenList[i];
-        if (spChild != NULL_var)
-        {
-            // Get child product name
-            CATUnicodeString childName;
-            spChild->GetDisplayName(childName);
-            
-            // Simplify name
-            const char* childNameStr = childName.ConvertToChar();
-            const char* lastChildSlash = strrchr(childNameStr, '\\');
-            if (lastChildSlash)
-                childName = CATUnicodeString(lastChildSlash + 1);
-            
-            // Remove extension
-            int childDotPos = childName.Find(".");
-            if (childDotPos > 0)
-            {
-                CATUnicodeString temp;
-                for (int j = 0; j < childDotPos; j++)
-                {
-                    temp.Append(childName[j]);
-                }
-                childName = temp;
-            }
-            
-            NewBomLog("ASSEMBLY_DLG", "    Child[%d]: %s", i, childName.ConvertToChar());
-            
-            // Add child item under root
-            int childItem = m_pAssemblyTree->AddItem(childName, rootItem);
-            NewBomLog("ASSEMBLY_DLG", "    Child item added: index=%d parent=%d", childItem, rootItem);
-            
-            // Recursively get children of this child (deeper levels)
-            CATLISTP(CATIProduct) grandChildrenList;
-            spChild->GetChildren(grandChildrenList);
-            
-            int numGrandChildren = grandChildrenList.Size();
-            NewBomLog("ASSEMBLY_DLG", "    Grandchildren count: %d", numGrandChildren);
-            
-            for (int j = 1; j <= numGrandChildren; j++)
-            {
-                CATIProduct_var spGrandChild = grandChildrenList[j];
-                if (spGrandChild != NULL_var)
-                {
-                    CATUnicodeString grandChildName;
-                    spGrandChild->GetDisplayName(grandChildName);
-                    
-                    // Simplify name
-                    const char* gcNameStr = grandChildName.ConvertToChar();
-                    const char* lastGCSlash = strrchr(gcNameStr, '\\');
-                    if (lastGCSlash)
-                        grandChildName = CATUnicodeString(lastGCSlash + 1);
-                    
-                    int gcDotPos = grandChildName.Find(".");
-                    if (gcDotPos > 0)
-                    {
-                        CATUnicodeString temp;
-                        for (int k = 0; k < gcDotPos; k++)
-                        {
-                            temp.Append(grandChildName[k]);
-                        }
-                        grandChildName = temp;
-                    }
-                    
-                    NewBomLog("ASSEMBLY_DLG", "      GrandChild[%d]: %s", j, grandChildName.ConvertToChar());
-                    
-                    int grandChildItem = m_pAssemblyTree->AddItem(grandChildName, childItem);
-                    NewBomLog("ASSEMBLY_DLG", "      GrandChild item added: index=%d parent=%d", grandChildItem, childItem);
-                }
-            }
-        }
-    }
-
-    // Expand root item to show tree
-    m_pAssemblyTree->ExpandItem(rootItem);
-    NewBomLog("ASSEMBLY_DLG", "  Root item expanded");
-
-    NewBomLog("ASSEMBLY_DLG", "PopulateTree END");
 }

@@ -312,19 +312,18 @@ CATCmdContainer* NewBomAddin::CreateToolbars()
     // STEP 4.5: Create Submenu "AssemblyTree" (获取装配树) - Sibling of "NumberMgt"
     // =========================================================================
     NewBomLog("ADDIN", "STEP 4.5: Creating submenu 'AssemblyTree' (获取装配树)...");
-    NewBomLog("ADDIN", "  Chinese characters (UCS-2): 获=0x83B7, 取=0x53D6, 装=0x88F6, 配=0x914D, 树=0x6811");
+    NewBomLog("ADDIN", "  Chinese characters (UCS-2): 获=0x83B7, 取=0x53D6, 装=0x88C5, 配=0x914D, 树=0x6811");
     
     NewBomLog("ADDIN", "  [4.5a] NewAccess creates container with ID 'NewBomAssemblyTreeMnu'");
     NewAccess(CATCmdContainer, pAssemblyTreeMenu, NewBomAssemblyTreeMnu);
     NewBomLog("ADDIN", "       Result: pAssemblyTreeMenu = %p", pAssemblyTreeMenu);
     
-    NewBomLog("ADDIN", "  [4.5b] SetAccessChild attaches this submenu to top menu");
-    SetAccessChild(pTopMenu, pAssemblyTreeMenu);
-    NewBomLog("ADDIN", "       Done: 'AssemblyTree' is now a submenu of 'NewBOM'");
+    // Note: We don't call SetAccessChild here - SetAccessNext in STEP 5 will chain
+    // AssemblyTree as sibling of NumberMgt, which automatically puts it in TopMenu
     
-    NewBomLog("ADDIN", "  [4.5c] SetTitle sets Chinese display text");
+    NewBomLog("ADDIN", "  [4.5b] SetTitle sets Chinese display text");
     {
-        static const CATUC2Bytes titleChars[] = {0x83B7, 0x53D6, 0x88F6, 0x914D, 0x6811, 0};  // "获取装配树"
+        static const CATUC2Bytes titleChars[] = {0x83B7, 0x53D6, 0x88C5, 0x914D, 0x6811, 0};  // "获取装配树"
         CATUnicodeString title;
         title.BuildFromUCChar(titleChars, 5);
         NewBomLog("ADDIN", "       String length = %d characters (should be 5)", title.GetLengthInChar());
@@ -332,15 +331,15 @@ CATCmdContainer* NewBomAddin::CreateToolbars()
         NewBomLog("ADDIN", "       SetTitle() called");
     }
     
-    NewBomLog("ADDIN", "  [4.5d] Create command item starter");
+    NewBomLog("ADDIN", "  [4.5c] Create command item starter");
     NewAccess(CATCmdStarter, pAssemblyTreeStarter, NewBomAssemblyTreeStr);
     NewBomLog("ADDIN", "       Result: pAssemblyTreeStarter = %p", pAssemblyTreeStarter);
     
-    NewBomLog("ADDIN", "  [4.5e] SetAccessCommand links starter to command header");
+    NewBomLog("ADDIN", "  [4.5d] SetAccessCommand links starter to command header");
     SetAccessCommand(pAssemblyTreeStarter, "NewBomAssemblyTreeCmd");
     NewBomLog("ADDIN", "       Done: Clicking this item will run NewBomAssemblyTreeCmd");
     
-    NewBomLog("ADDIN", "  [4.5f] SetAccessChild puts item inside 'AssemblyTree' submenu");
+    NewBomLog("ADDIN", "  [4.5e] SetAccessChild puts item inside 'AssemblyTree' submenu");
     SetAccessChild(pAssemblyTreeMenu, pAssemblyTreeStarter);
     NewBomLog("ADDIN", "       Done: Command item is now inside 'AssemblyTree'");
     
