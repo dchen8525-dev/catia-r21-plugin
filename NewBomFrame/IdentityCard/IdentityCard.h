@@ -102,6 +102,29 @@ AddPrereqComponent("SpecialAPI", Public);
 //   - Menu title setting
 AddPrereqComponent("System", Public);
 
+// ProductStructure - CATIA Product Structure API
+// Contains:
+//   - CATIProduct: Product interface for assembly structure
+//   - CATProduct: Product document type
+//   - CATIProduct_var: Smart pointer for product
+//   - CATListPtrCATIProduct: List of products
+//
+// We need it for:
+//   - Traverse assembly tree structure
+//   - Get children products from parent
+//   - Get product/part names
+AddPrereqComponent("ProductStructure", Public);
+
+// CATFrmEditor - CATIA Frame Editor
+// Contains:
+//   - CATFrmEditor: Editor class for current document
+//   - CATIDocument: Document interface
+//
+// We need it for:
+//   - Get current active document
+//   - Determine document type (Product or Part)
+AddPrereqComponent("CATFrmEditor", Public);
+
 // =============================================================================
 // Dependency Graph
 // =============================================================================
@@ -112,5 +135,7 @@ AddPrereqComponent("System", Public);
 //     |- ObjectModelerBase (Object model - base classes)
 //     |- SpecialAPI (Special API)
 //     |- System (System base - strings)
+//     |- ProductStructure (Product structure - assembly tree)
+//     |- CATFrmEditor (Frame editor - document access)
 //
 // =============================================================================

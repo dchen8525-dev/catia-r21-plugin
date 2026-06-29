@@ -151,7 +151,31 @@ void NewBomAddin::CreateCommands()
     }
     NewBomLog("ADDIN", "");
 
-    NewBomLog("ADDIN", "CreateCommands() END - Headers registered: %p, %p", header, aboutHeader);
+    // -----------------------------------------------------------------------
+    // Command Header 3: NewBomAssemblyTreeCmd (GetAssemblyTree)
+    // -----------------------------------------------------------------------
+    NewBomLog("ADDIN", "[Command 3] Creating NewBomAssemblyTreeCmd header...");
+    NewBomLog("ADDIN", "  - HeaderID: 'NewBomAssemblyTreeCmd'");
+    NewBomLog("ADDIN", "  - LoadName:  'NewBomModule' (DLL name)");
+    NewBomLog("ADDIN", "  - ClassName: 'NewBomAssemblyTreeCmd' (command class to run)");
+    NewBomLog("ADDIN", "  - Argument:  NULL (no data passed)");
+    
+    CATCommandHeader* assemblyTreeHeader = new NewBomHeader("NewBomAssemblyTreeCmd",
+                                                            "NewBomModule",
+                                                            "NewBomAssemblyTreeCmd",
+                                                            (void*) NULL);
+    
+    if (assemblyTreeHeader != NULL)
+    {
+        NewBomLog("ADDIN", "  SUCCESS: AssemblyTree header created at address %p", assemblyTreeHeader);
+    }
+    else
+    {
+        NewBomLog("ADDIN", "  ERROR: Failed to create AssemblyTree header!");
+    }
+    NewBomLog("ADDIN", "");
+
+    NewBomLog("ADDIN", "CreateCommands() END - Headers registered: %p, %p, %p", header, aboutHeader, assemblyTreeHeader);
 }
 
 //=============================================================================
@@ -285,6 +309,45 @@ CATCmdContainer* NewBomAddin::CreateToolbars()
     NewBomLog("ADDIN", "");
 
     // =========================================================================
+    // STEP 4.5: Create Submenu "AssemblyTree" (获取装配树) - Sibling of "NumberMgt"
+    // =========================================================================
+    NewBomLog("ADDIN", "STEP 4.5: Creating submenu 'AssemblyTree' (获取装配树)...");
+    NewBomLog("ADDIN", "  Chinese characters (UCS-2): 获=0x83B7, 取=0x53D6, 装=0x88F6, 配=0x914D, 树=0x6811");
+    
+    NewBomLog("ADDIN", "  [4.5a] NewAccess creates container with ID 'NewBomAssemblyTreeMnu'");
+    NewAccess(CATCmdContainer, pAssemblyTreeMenu, NewBomAssemblyTreeMnu);
+    NewBomLog("ADDIN", "       Result: pAssemblyTreeMenu = %p", pAssemblyTreeMenu);
+    
+    NewBomLog("ADDIN", "  [4.5b] SetAccessChild attaches this submenu to top menu");
+    SetAccessChild(pTopMenu, pAssemblyTreeMenu);
+    NewBomLog("ADDIN", "       Done: 'AssemblyTree' is now a submenu of 'NewBOM'");
+    
+    NewBomLog("ADDIN", "  [4.5c] SetTitle sets Chinese display text");
+    {
+        static const CATUC2Bytes titleChars[] = {0x83B7, 0x53D6, 0x88F6, 0x914D, 0x6811, 0};  // "获取装配树"
+        CATUnicodeString title;
+        title.BuildFromUCChar(titleChars, 5);
+        NewBomLog("ADDIN", "       String length = %d characters (should be 5)", title.GetLengthInChar());
+        pAssemblyTreeMenu->SetTitle(title);
+        NewBomLog("ADDIN", "       SetTitle() called");
+    }
+    
+    NewBomLog("ADDIN", "  [4.5d] Create command item starter");
+    NewAccess(CATCmdStarter, pAssemblyTreeStarter, NewBomAssemblyTreeStr);
+    NewBomLog("ADDIN", "       Result: pAssemblyTreeStarter = %p", pAssemblyTreeStarter);
+    
+    NewBomLog("ADDIN", "  [4.5e] SetAccessCommand links starter to command header");
+    SetAccessCommand(pAssemblyTreeStarter, "NewBomAssemblyTreeCmd");
+    NewBomLog("ADDIN", "       Done: Clicking this item will run NewBomAssemblyTreeCmd");
+    
+    NewBomLog("ADDIN", "  [4.5f] SetAccessChild puts item inside 'AssemblyTree' submenu");
+    SetAccessChild(pAssemblyTreeMenu, pAssemblyTreeStarter);
+    NewBomLog("ADDIN", "       Done: Command item is now inside 'AssemblyTree'");
+    
+    NewBomLog("ADDIN", "STEP 4.5 COMPLETE - Submenu 'AssemblyTree' created");
+    NewBomLog("ADDIN", "");
+
+    // =========================================================================
     // STEP 5: Create Submenu "Tools" (Tools) - Sibling of "NumberMgt"
     // =========================================================================
     NewBomLog("ADDIN", "STEP 5: Creating submenu 'Tools' (Tools)...");
@@ -295,13 +358,13 @@ CATCmdContainer* NewBomAddin::CreateToolbars()
     NewAccess(CATCmdContainer, pToolsMenu, NewBomToolsMnu);
     NewBomLog("ADDIN", "       Result: pToolsMenu = %p", pToolsMenu);
     
-    NewBomLog("ADDIN", "  [5b] SetAccessNext chains this submenu after 'NumberMgt'");
-    NewBomLog("ADDIN", "       Call: SetAccessNext(pNumberMgtMenu, pToolsMenu)");
+    NewBomLog("ADDIN", "  [5b] SetAccessNext chains menus in order: NumberMgt -> AssemblyTree -> Tools");
+    NewBomLog("ADDIN", "       Call: SetAccessNext(pNumberMgtMenu, pAssemblyTreeMenu)");
+    NewBomLog("ADDIN", "       Call: SetAccessNext(pAssemblyTreeMenu, pToolsMenu)");
     NewBomLog("ADDIN", "       IMPORTANT: SetAccessNext creates sibling relationship");
-    NewBomLog("ADDIN", "       - SetAccessChild = parent-child relationship");
-    NewBomLog("ADDIN", "       - SetAccessNext = sibling relationship (same level)");
-    SetAccessNext(pNumberMgtMenu, pToolsMenu);
-    NewBomLog("ADDIN", "       Done: 'Tools' now appears next to 'NumberMgt' in menu");
+    SetAccessNext(pNumberMgtMenu, pAssemblyTreeMenu);
+    SetAccessNext(pAssemblyTreeMenu, pToolsMenu);
+    NewBomLog("ADDIN", "       Done: Menu order is now '编号管理' -> '获取装配树' -> '工具'");
     
     NewBomLog("ADDIN", "  [5c] SetTitle sets Chinese display text");
     {
@@ -360,14 +423,16 @@ CATCmdContainer* NewBomAddin::CreateToolbars()
     NewBomLog("ADDIN", "CreateToolbars() COMPLETE - Menu Structure Built Successfully");
     NewBomLog("ADDIN", "===========================================");
     NewBomLog("ADDIN", "Summary of created objects:");
-    NewBomLog("ADDIN", "  pAddinRoot     = %p (returned to CATIA)", pAddinRoot);
-    NewBomLog("ADDIN", "  pMenuBar       = %p (menu bar container)", pMenuBar);
-    NewBomLog("ADDIN", "  pTopMenu       = %p (NewBOM top menu)", pTopMenu);
-    NewBomLog("ADDIN", "  pNumberMgtMenu = %p (NumberMgt submenu)", pNumberMgtMenu);
-    NewBomLog("ADDIN", "  pToolsMenu     = %p (Tools submenu)", pToolsMenu);
+    NewBomLog("ADDIN", "  pAddinRoot        = %p (returned to CATIA)", pAddinRoot);
+    NewBomLog("ADDIN", "  pMenuBar          = %p (menu bar container)", pMenuBar);
+    NewBomLog("ADDIN", "  pTopMenu          = %p (NewBOM top menu)", pTopMenu);
+    NewBomLog("ADDIN", "  pNumberMgtMenu    = %p (NumberMgt submenu)", pNumberMgtMenu);
+    NewBomLog("ADDIN", "  pAssemblyTreeMenu = %p (AssemblyTree submenu)", pAssemblyTreeMenu);
+    NewBomLog("ADDIN", "  pToolsMenu        = %p (Tools submenu)", pToolsMenu);
     NewBomLog("ADDIN", "");
     NewBomLog("ADDIN", "Menu tree ready:");
     NewBomLog("ADDIN", "  NewBOM -> NumberMgt -> GetNewNumber");
+    NewBomLog("ADDIN", "         -> AssemblyTree -> GetAssemblyTree");
     NewBomLog("ADDIN", "         -> Tools -> AboutPlugin");
     NewBomLog("ADDIN", "===========================================");
     
